@@ -5,7 +5,7 @@ import {
   Route 
 } from "react-router-dom"
 import { WeatherCity } from "./components/WeatherCity";
-//import { WeatherDetails } from "./components/WeatherDetails";
+import { WeatherDetails } from "./components/WeatherDetails";
 
 /**
  * APP para verificar o clima das cidades
@@ -32,7 +32,7 @@ function App() {
       <Switch>
         <Route to="/">
           <WeatherCity/>
-          {/* <WeatherDetails/> */}
+          <WeatherDetails/>
         </Route>
       </Switch>
     </Router>

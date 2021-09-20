@@ -11,6 +11,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.5",
@@ -43,5 +44,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "App para previsao do tempo",
+  "main": "index.js",
+  "repository": "https://github.com/Gustavo-OF/Weather-Forecast-App.git",
+  "author": "Gustavo Freitas <gustavofreitas10@hotmail.com>",
+  "license": "MIT"
 }
