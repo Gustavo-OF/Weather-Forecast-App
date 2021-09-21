@@ -6,45 +6,61 @@ const Background = styled.div`
     width: 75.4%;
     margin-left: 24%;
     margin-top: -0.6%;  
-    height: 41.09em;
+    height: 100%;
     position: absolute;
     overflow: hidden;
 `
-
 const NextDaysDiv = styled.div`
-    width: 100px;
-    height: 140px;
-    top: 13%;
-    padding-top:5px;
-    margin-right: 8%;
+    //border: 1px solid red;
+    height: 200px;
+    width: 70%;
+    margin-top: 5%;
+    margin-left: 10%;
+    display: flex;
+`
+
+const NextDays = styled.div`
+    width: 25%;
+    height: 75%;
+    margin: 2% 2% 0 2%;
+    padding-top:2%;
     float: right;
     position: relative;   
     background-color: #1E213A;
 `
 
 const DivSpaceHighlights = styled.div`
-    //border: 1px solid black;
-    width: 200px;
+    //border: 1px solid red;
     height: 60%;
     position: fixed;
     bottom: 0;
-    width: 61%;
+    width: 51%;
     margin-left: 8.5%;
 `
 
-const DivHighlights = styled.div`
+const DivHighlightsLeft = styled.div`
     border: 1px solid black;
-    width: 260px;
-    height: 140px;
-    margin-top: 25px;
-    margin-left: 100px;
+    width: 40%;
+    height: 38%;
+    margin-top: 1%;
+    margin-right: 5%;
     float: left;
+    background-color: #1E213A;
+`
+const DivHighlightsRight = styled.div`
+    border: 1px solid black;
+    width: 40%;
+    height: 38%;
+    margin-top: 1%;
+    float: right;
     background-color: #1E213A;
 `
 
 export { 
-    Background, 
-    NextDaysDiv,
+    Background,
+    NextDaysDiv, 
+    NextDays,
     DivSpaceHighlights,
-    DivHighlights
+    DivHighlightsLeft,
+    DivHighlightsRight
 }

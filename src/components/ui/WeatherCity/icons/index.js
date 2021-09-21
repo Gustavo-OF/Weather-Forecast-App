@@ -19,7 +19,7 @@ const IconLeftBottom = styled.svg`
     height:75px;
     opacity:0.3;
     position: absolute;
-    left: -3%;
+    left: -7%;
     margin-top:1%;
 `
 const IconLeftUp = styled.svg`
@@ -27,8 +27,8 @@ const IconLeftUp = styled.svg`
     height:75px;
     opacity:0.3;
     position: absolute;
-    left: -1%;
-    margin-top: -12%;
+    left: -5%;
+    margin-top: -50%;
 `
 
 const IconRightBottom = styled.svg`
@@ -36,8 +36,8 @@ const IconRightBottom = styled.svg`
     height:75px;
     opacity:0.3;
     float: right;
-    margin-right:-10%;
     margin-top: 4%; 
+    margin-right: -6%;
 `
 
 const IconRightUp = styled.svg`
@@ -46,7 +46,8 @@ const IconRightUp = styled.svg`
     opacity:0.3;
     float: right;
     margin-top: -48%;
-    margin-right: -17%;
+    margin-right: -20%;
+    position: relative;
 `
 const IconLocalization = styled.svg`
     height: 20px;

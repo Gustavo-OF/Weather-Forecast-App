@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-// import api from "../services/api";
-import CloudIcon  from '@material-ui/icons/Cloud';
-import RoomIcon from '@material-ui/icons/Room';
-import GpsFixedIcon from '@material-ui/icons/GpsFixed';
+import CloudIcon  from "@material-ui/icons/Cloud";
+import RoomIcon from "@material-ui/icons/Room";
+import GpsFixedIcon from "@material-ui/icons/GpsFixed";
+
+import api from "./useCases/ReturnWeather/api";
 
 import { 
     Background, 
@@ -29,13 +30,13 @@ import { SearchCitiesButton, GetLocalizationButton } from "./ui/WeatherCity/butt
 
 
 function WeatherCity() {
-    // const [weather, setWeather] = useState();
+    const [weather, setWeather] = useState();
 
-    // useEffect(() => {
-    //   api
-    //     .get("/search/?query=tor")
-    //     .then((response) => console.log(response.data))
-    // }, []);
+    useEffect(() => {
+        api.get("/search/?query=tor").then(
+          (response) => console.log(response.data)
+        )}, 
+    []);
     return (
         <Background>
             <DivSearch>
@@ -67,11 +68,11 @@ function WeatherCity() {
             </DivIcon>
             <DivInformations>
                 <Date>
-                     . Fri, 5 Jun
+                    Today . Fri, 5 Jun
                 </Date>
                 <Location>
                     <RoomIcon></RoomIcon>
-                    {/* {weather.name} */}
+                    São Paulo
                 </Location>
             </DivInformations>
         </Background>
