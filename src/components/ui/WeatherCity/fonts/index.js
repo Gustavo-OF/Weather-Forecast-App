@@ -1,7 +1,8 @@
 import styled from "styled-components"
+import "@fontsource/raleway";
 
 const Temperature = styled.h1`
-    font-family: sans-serif;
+    font-family: Raleway;
     text-align: center;
     font-weight: 100;
     font-size: 50px;
@@ -9,19 +10,19 @@ const Temperature = styled.h1`
 `
 
 const WeatherState = styled.h2`
-    font-family: sans-serif;
+    font-family: Raleway;
     text-align: center;
     font-weight: 100;
     color: #a09fb1;
 `
-const Date = styled.h4`
-    font-family: sans-serif;
+const DateInfo = styled.h4`
+    font-family: Raleway;
     text-align: center;
     font-weight: 100;
     color: #a09fb1;
 `
 const Location = styled.h4`
-    font-family: sans-serif;
+    font-family: Raleway;
     text-align: center;
     font-weight: 100;
     color: #a09fb1;
@@ -30,6 +31,6 @@ const Location = styled.h4`
 export { 
     Temperature,
     WeatherState,
-    Date,
+    DateInfo,
     Location
 }

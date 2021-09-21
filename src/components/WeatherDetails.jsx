@@ -18,21 +18,7 @@ function WeatherDetails() {
             <NextDaysDiv>
             <NextDays>
                 <WeekDays>
-                    <p>Wed, 10 Jun</p>
-                    <CloudIcon></CloudIcon>
-                    <p>16℃ 11℃</p>
-                </WeekDays>
-            </NextDays>
-            <NextDays>
-                <WeekDays>
-                    <p>Tue, 9 Jun</p>
-                    <CloudIcon></CloudIcon>
-                    <p>16℃ 11℃</p>
-                </WeekDays>
-            </NextDays>
-            <NextDays>
-                <WeekDays>
-                    <p>Mon, 8 Jun</p>
+                    <p>Tomorrow</p>
                     <CloudIcon></CloudIcon>
                     <p>16℃ 11℃</p>
                 </WeekDays>
@@ -46,7 +32,21 @@ function WeatherDetails() {
             </NextDays>
             <NextDays>
                 <WeekDays>
-                    <p>Tomorrow</p>
+                    <p>Mon, 8 Jun</p>
+                    <CloudIcon></CloudIcon>
+                    <p>16℃ 11℃</p>
+                </WeekDays>
+            </NextDays>
+            <NextDays>
+                <WeekDays>
+                    <p>Tue, 9 Jun</p>
+                    <CloudIcon></CloudIcon>
+                    <p>16℃ 11℃</p>
+                </WeekDays>
+            </NextDays>
+            <NextDays>
+                <WeekDays>
+                    <p>Wed, 10 Jun</p>
                     <CloudIcon></CloudIcon>
                     <p>16℃ 11℃</p>
                 </WeekDays>

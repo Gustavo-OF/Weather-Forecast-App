@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
-import CloudIcon  from "@material-ui/icons/Cloud";
+import React, { useState, useEffect } from "react";
+import CloudIcon from "@material-ui/icons/Cloud";
 import RoomIcon from "@material-ui/icons/Room";
 import GpsFixedIcon from "@material-ui/icons/GpsFixed";
 
-import api from "./useCases/ReturnWeather/api";
 
-import { 
-    Background, 
+import {
+    Background,
     DivInformations,
     DivSearch
- } from "./ui/WeatherCity";
+} from "./ui/WeatherCity";
 import {
-    DivIcon, 
+    DivIcon,
     IconCenter,
     IconLeftBottom,
     IconLeftUp,
@@ -19,29 +18,46 @@ import {
     IconRightUp,
     IconLocalization
 } from "./ui/WeatherCity/icons"
-import { 
-        Temperature, 
-        WeatherState, 
-        Date,
-        Location
-} from "./ui/WeatherCity/fonts" 
-import { SearchCitiesButton, GetLocalizationButton } from "./ui/WeatherCity/buttons"
+import {
+    Temperature,
+    WeatherState,
+    DateInfo,
+    Location
+} from "./ui/WeatherCity/fonts"
+import { SearchCitiesButton, GetLocalizationButton } from "./ui/WeatherCity/buttons";
+import api from "./useCases/returnWeather/api";
+import { getLocation } from "./useCases/getPosition/getPosition";
 
 
 
-function WeatherCity() {
+function WeatherCity(props) {
+    let today = new Date();
+    let dayOfWeek = today.toLocaleDateString("en-us", { weekday: "short" });
+    let month = today.toLocaleDateString("en-us", { month: "short" });
+    today = today.toLocaleDateString().split("/");
+
     const [weather, setWeather] = useState();
+    const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
-        api.get("/search/?query=tor").then(
-          (response) => console.log(response.data)
-        )}, 
-    []);
+        api.get("/location/455827").then((response) => {
+            setWeather(response.data);
+            setLoading(false);
+        });
+    }, []);
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    console.log(weather);
+
     return (
+
         <Background>
             <DivSearch>
                 <SearchCitiesButton>Search for places</SearchCitiesButton>
-                <GetLocalizationButton>
+                <GetLocalizationButton onClick={getLocation}>
                     <IconLocalization>
                         <GpsFixedIcon></GpsFixedIcon>
                     </IconLocalization>
@@ -49,27 +65,27 @@ function WeatherCity() {
             </DivSearch>
             <DivIcon>
                 <IconCenter>
-                    <CloudIcon/>
+                    <CloudIcon />
                 </IconCenter>
                 <IconLeftBottom>
-                    <CloudIcon/>
+                    <CloudIcon />
                 </IconLeftBottom>
                 <IconRightBottom>
-                    <CloudIcon/>
+                    <CloudIcon />
                 </IconRightBottom>
                 <IconLeftUp>
-                    <CloudIcon/>
+                    <CloudIcon />
                 </IconLeftUp>
                 <IconRightUp>
-                    <CloudIcon/>
+                    <CloudIcon />
                 </IconRightUp>
-                <Temperature> 15℃ </Temperature>
-                <WeatherState>Shower</WeatherState>
+                <Temperature> {weather.consolidated_weather[0].the_temp.toFixed(1)}℃ </Temperature>
+                <WeatherState>{weather.consolidated_weather[0].weather_state_name}</WeatherState>
             </DivIcon>
             <DivInformations>
-                <Date>
-                    Today . Fri, 5 Jun
-                </Date>
+                <DateInfo>
+                    Today . {dayOfWeek}, {today[0]} {month}
+                </DateInfo>
                 <Location>
                     <RoomIcon></RoomIcon>
                     São Paulo

@@ -8,7 +8,6 @@ const SearchCitiesButton = styled.button`
     margin: 4% 20% 2% 2%; 
     box-shadow: 2px 2px 2px 2px #17192c;
     border-radius: 0;
-    border-style: solid;
 `
 
 const GetLocalizationButton = styled.button`
@@ -19,7 +18,6 @@ const GetLocalizationButton = styled.button`
     height: 50%;
     margin: 4% 20% 2% 2%; 
     color: #e7e7eb;
-    border-style: solid;   
     box-shadow: 2px 2px 2px 2px #17192c; 
 `
 

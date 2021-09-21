@@ -39,7 +39,7 @@ const DivSpaceHighlights = styled.div`
 `
 
 const DivHighlightsLeft = styled.div`
-    border: 1px solid black;
+    //border: 1px solid black;
     width: 40%;
     height: 38%;
     margin-top: 1%;
@@ -48,7 +48,7 @@ const DivHighlightsLeft = styled.div`
     background-color: #1E213A;
 `
 const DivHighlightsRight = styled.div`
-    border: 1px solid black;
+    //border: 1px solid black;
     width: 40%;
     height: 38%;
     margin-top: 1%;

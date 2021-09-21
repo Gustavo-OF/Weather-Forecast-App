@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import "@fontsource/raleway";
 
 const WeekDays = styled.h4`
     font-family: sans-serif;
@@ -13,14 +14,14 @@ const Highlights = styled.h3`
 `
 
 const H1 = styled.h1`
-    font-family: sans-serif;
+    font-family: Raleway;
     font-weight: 100;
     color: #e7e7eb;
     text-align: center;
 `
 
 const H5 = styled.h5`
-    font-family: sans-serif;
+    font-family: Raleway;
     font-weight: 100;
     color: #e7e7eb;
     text-align: center;
