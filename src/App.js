@@ -1,12 +1,17 @@
-import { React } from "react";
-import { 
+import React, { useState, useEffect } from "react";
+import {
   BrowserRouter as Router,
   Switch,
-  Route 
+  Route
 } from "react-router-dom"
+import { Alert } from "@material-ui/core"
 
 import { WeatherCity } from "./components/WeatherCity";
 import { WeatherDetails } from "./components/WeatherDetails";
+import { SearchForPlaces } from "./components/SearchPlaces"
+import { getWeather } from "./components/useCases/returnWeather/api";
+import { Loader, DivError } from "./components/ui/Loader"
+
 
 /**
  * APP para verificar o clima das cidades
@@ -26,14 +31,54 @@ import { WeatherDetails } from "./components/WeatherDetails";
  *  [] Posso converter a temperatura de Celsius para Farenheit e vice-versa
  */
 
-
 function App() {
+
+  const [weather, setWeather] = useState();
+  const [isLoading, setLoading] = useState(true);
+  const [httpCode, setHttpCode] = useState(200)
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      getWeather(position.coords.latitude, position.coords.longitude).then((response) => {
+        if (response !== 429) {
+          setWeather(response);
+          setLoading(false);
+        } else {
+          setHttpCode(response)
+        }
+      })
+    });
+  }, []);
+
+  if (httpCode === 429) {
+    return (
+      <DivError>
+        <Alert severity="error" variant="filled">
+          Você ultrapassou a cota de 50 requisições por hora. Por favor, tente novamente mais tarde.
+        </Alert>
+      </DivError>
+
+    );
+  } else if (isLoading) {
+
+    return (
+      <Loader>
+      </Loader>
+    );
+  }
+
+  let link = `https://www.metaweather.com/static/img/weather/${weather.consolidated_weather[0].weather_state_abbr}.svg`;
+
   return (
     <Router>
       <Switch>
-        <Route to="/">
-          <WeatherCity/>
-          <WeatherDetails/>
+      <Route path="/search">
+          <SearchForPlaces/>
+          <WeatherDetails weather={weather}/>
+        </Route>
+        <Route path="/">
+          <WeatherCity weather={weather} link={link} />
+          <WeatherDetails weather={weather}/>
         </Route>
       </Switch>
     </Router>

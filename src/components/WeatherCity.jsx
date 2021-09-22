@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import CloudIcon from "@material-ui/icons/Cloud";
-import RoomIcon from "@material-ui/icons/Room";
+import React from "react";
 import GpsFixedIcon from "@material-ui/icons/GpsFixed";
+import RoomIcon from "@material-ui/icons/Room";
+import { Link } from "react-router-dom";
 
 
 import {
@@ -25,39 +25,20 @@ import {
     Location
 } from "./ui/WeatherCity/fonts"
 import { SearchCitiesButton, GetLocalizationButton } from "./ui/WeatherCity/buttons";
-import api from "./useCases/returnWeather/api";
-import { getLocation } from "./useCases/getPosition/getPosition";
-
-
+import { returnDate } from "./useCases/formatingDate";
 
 function WeatherCity(props) {
-    let today = new Date();
-    let dayOfWeek = today.toLocaleDateString("en-us", { weekday: "short" });
-    let month = today.toLocaleDateString("en-us", { month: "short" });
-    today = today.toLocaleDateString().split("/");
-
-    const [weather, setWeather] = useState();
-    const [isLoading, setLoading] = useState(true);
-
-    useEffect(() => {
-        api.get("/location/455827").then((response) => {
-            setWeather(response.data);
-            setLoading(false);
-        });
-    }, []);
-
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-
-    console.log(weather);
-
+    let day = returnDate();
     return (
 
         <Background>
             <DivSearch>
-                <SearchCitiesButton>Search for places</SearchCitiesButton>
-                <GetLocalizationButton onClick={getLocation}>
+                <Link to="/search">
+                    <SearchCitiesButton>
+                        Search for places
+                    </SearchCitiesButton>
+                </Link>
+                <GetLocalizationButton>
                     <IconLocalization>
                         <GpsFixedIcon></GpsFixedIcon>
                     </IconLocalization>
@@ -65,30 +46,33 @@ function WeatherCity(props) {
             </DivSearch>
             <DivIcon>
                 <IconCenter>
-                    <CloudIcon />
+                    <img src={props.link} alt="title"></img>
                 </IconCenter>
                 <IconLeftBottom>
-                    <CloudIcon />
+                    <img src={props.link} alt="title"></img>
                 </IconLeftBottom>
                 <IconRightBottom>
-                    <CloudIcon />
+                    <img src={props.link} alt="title"></img>
+
                 </IconRightBottom>
                 <IconLeftUp>
-                    <CloudIcon />
+                    <img src={props.link} alt="title"></img>
+
                 </IconLeftUp>
                 <IconRightUp>
-                    <CloudIcon />
+                    <img src={props.link} alt="title"></img>
+
                 </IconRightUp>
-                <Temperature> {weather.consolidated_weather[0].the_temp.toFixed(1)}℃ </Temperature>
-                <WeatherState>{weather.consolidated_weather[0].weather_state_name}</WeatherState>
+                <Temperature> {props.weather.consolidated_weather[0].the_temp.toFixed(1)}℃ </Temperature>
+                <WeatherState>{props.weather.consolidated_weather[0].weather_state_name}</WeatherState>
             </DivIcon>
             <DivInformations>
                 <DateInfo>
-                    Today . {dayOfWeek}, {today[0]} {month}
+                    Today . {day[1]}, {day[0]} {day[2]}
                 </DateInfo>
                 <Location>
                     <RoomIcon></RoomIcon>
-                    São Paulo
+                    {props.weather.title}
                 </Location>
             </DivInformations>
         </Background>

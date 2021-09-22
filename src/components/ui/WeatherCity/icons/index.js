@@ -7,14 +7,13 @@ const DivIcon = styled.div`
     margin-top: 20%;
 `
 
-const IconCenter = styled.svg`
-    width: 150px;
-    height: 150px;
-    position: relative;
-    display: block;
-    margin: auto;
+const IconCenter = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 `
-const IconLeftBottom = styled.svg`
+const IconLeftBottom = styled.div`
     width: 75px;
     height:75px;
     opacity:0.3;
@@ -22,7 +21,7 @@ const IconLeftBottom = styled.svg`
     left: -7%;
     margin-top:1%;
 `
-const IconLeftUp = styled.svg`
+const IconLeftUp = styled.div`
     width: 75px;
     height:75px;
     opacity:0.3;
@@ -31,7 +30,7 @@ const IconLeftUp = styled.svg`
     margin-top: -50%;
 `
 
-const IconRightBottom = styled.svg`
+const IconRightBottom = styled.div`
     width: 75px;
     height:75px;
     opacity:0.3;
@@ -40,7 +39,7 @@ const IconRightBottom = styled.svg`
     margin-right: -6%;
 `
 
-const IconRightUp = styled.svg`
+const IconRightUp = styled.div`
     width: 75px;
     height:75px;
     opacity:0.3;

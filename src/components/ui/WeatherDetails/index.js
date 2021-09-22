@@ -21,9 +21,8 @@ const NextDaysDiv = styled.div`
 
 const NextDays = styled.div`
     width: 25%;
-    height: 75%;
+    height: 85%;
     margin: 2% 2% 0 2%;
-    padding-top:2%;
     float: right;
     position: relative;   
     background-color: #1E213A;
@@ -55,6 +54,11 @@ const DivHighlightsRight = styled.div`
     float: right;
     background-color: #1E213A;
 `
+const IconImg = styled.div`
+    width: 50%;
+    height:3%;
+    margin-left: 25%;
+`
 
 export { 
     Background,
@@ -62,5 +66,6 @@ export {
     NextDays,
     DivSpaceHighlights,
     DivHighlightsLeft,
-    DivHighlightsRight
+    DivHighlightsRight,
+    IconImg
 }

@@ -7,6 +7,11 @@ const WeekDays = styled.h4`
     font-weight: 100;
     color: #e7e7eb;
 `
+const Icon = styled.svg`
+    width: 150px;
+    height: 150px;
+`
+
 const Highlights = styled.h3`
     font-family: sans-serif;
     font-weight: 100;
@@ -27,4 +32,4 @@ const H5 = styled.h5`
     text-align: center;
 `
 
-export { WeekDays,Highlights, H1, H5 }
+export { WeekDays,Highlights, H1, H5, Icon }
