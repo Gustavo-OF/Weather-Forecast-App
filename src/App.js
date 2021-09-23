@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import {
-  BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  useLocation
 } from "react-router-dom"
 import { Alert } from "@material-ui/core"
 
@@ -11,6 +11,7 @@ import { WeatherDetails } from "./components/WeatherDetails";
 import { SearchForPlaces } from "./components/SearchPlaces"
 import { getWeather } from "./components/useCases/returnWeather/api";
 import { Loader, DivError } from "./components/ui/Loader"
+
 
 
 /**
@@ -32,14 +33,26 @@ import { Loader, DivError } from "./components/ui/Loader"
  */
 
 function App() {
-
+  let location = useLocation()
   const [weather, setWeather] = useState();
   const [isLoading, setLoading] = useState(true);
-  const [httpCode, setHttpCode] = useState(200)
+  const [httpCode, setHttpCode] = useState(200);
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      getWeather(position.coords.latitude, position.coords.longitude).then((response) => {
+    let uriParams = location.pathname.split("/");
+    if(uriParams[1] === "" || uriParams[1] === 'search')  {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        getWeather(position.coords.latitude, position.coords.longitude).then((response) => {
+          if (response !== 429) {
+            setWeather(response);
+            setLoading(false);
+          } else {
+            setHttpCode(response)
+          }
+        })
+      });
+    }else{
+      getWeather(parseFloat(uriParams[1]), parseFloat(uriParams[2])).then((response) => {
         if (response !== 429) {
           setWeather(response);
           setLoading(false);
@@ -47,8 +60,8 @@ function App() {
           setHttpCode(response)
         }
       })
-    });
-  }, []);
+    }
+  }, [location]);
 
   if (httpCode === 429) {
     return (
@@ -70,18 +83,16 @@ function App() {
   let link = `https://www.metaweather.com/static/img/weather/${weather.consolidated_weather[0].weather_state_abbr}.svg`;
 
   return (
-    <Router>
       <Switch>
       <Route path="/search">
           <SearchForPlaces/>
           <WeatherDetails weather={weather}/>
         </Route>
-        <Route path="/">
+        <Route path="/:lat?/:long?">
           <WeatherCity weather={weather} link={link} />
           <WeatherDetails weather={weather}/>
         </Route>
       </Switch>
-    </Router>
   );
 }
 

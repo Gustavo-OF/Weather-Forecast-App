@@ -12,18 +12,6 @@ const Background = styled.div`
     position: absolute;
 `
 
-const Back = styled.div`
-    color: #e7e7eb;
-    width: 25%;
-    height: 30%;
-    float: right;
-    margin-right: -5%;
-    font-family: Raleway;
-    font-weight: 100;
-    margin-top: 5%;
-    font-size: 35px;
-`
-
 const Input = styled.input`
     margin-top: 7%;
     height: 4.3%;
@@ -34,28 +22,43 @@ const Input = styled.input`
 `
 const SearchDiv = styled.div`
     margin-top: 25% ;
-    width: 75%;
+    width: 60%;
     height: 10%;
-    margin-left: 3%;
+    margin-left: 5%;
 `
 
-const SearchButton = styled.button`
-    background-color: #3c47e9;
-    color: #efefef;
-    width: 6%;
-    height: 5%;
-    margin-left: 1%;
+const ResultsDiv = styled.div`
+    width: 87%;
+    height: auto;
+    margin-top: -15%;
+    //border: 1px solid red;
+    margin-left: 15%;
+
+`
+const ListCitiesUl = styled.ul`
+    list-style-type: none;
+`
+
+const ResultsLi = styled.li`
     font-family: Raleway;
-    font-weight: 100;
-    position: fixed;
-    font-size: 20px;
-    border-style: solid;
+    margin-top: 15%;
+    margin-left: -45%;
+    height: auto;
+    width: auto;
+    color: white;
+    :hover{
+        border: 1px solid grey;
+        width: 80%;
+        padding: 5% 5% 5% 3%;
+    }
+    list-style-type: none;
 `
 
 export { 
     Background, 
-    Back, 
     Input, 
-    SearchButton,
-    SearchDiv
+    SearchDiv,
+    ResultsDiv,
+    ResultsLi,
+    ListCitiesUl
 }

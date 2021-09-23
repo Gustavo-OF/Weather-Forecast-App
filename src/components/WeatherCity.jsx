@@ -38,11 +38,13 @@ function WeatherCity(props) {
                         Search for places
                     </SearchCitiesButton>
                 </Link>
-                <GetLocalizationButton>
-                    <IconLocalization>
-                        <GpsFixedIcon></GpsFixedIcon>
-                    </IconLocalization>
-                </GetLocalizationButton>
+                <Link to="/">
+                    <GetLocalizationButton>
+                        <IconLocalization>
+                            <GpsFixedIcon></GpsFixedIcon>
+                        </IconLocalization>
+                    </GetLocalizationButton>
+                </Link>
             </DivSearch>
             <DivIcon>
                 <IconCenter>
