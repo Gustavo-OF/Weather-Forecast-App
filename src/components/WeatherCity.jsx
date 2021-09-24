@@ -63,14 +63,13 @@ function WeatherCity(props) {
                 </IconLeftUp>
                 <IconRightUp>
                     <img src={props.link} alt="title"></img>
-
                 </IconRightUp>
                 <Temperature> {props.weather.consolidated_weather[0].the_temp.toFixed(1)}℃ </Temperature>
                 <WeatherState>{props.weather.consolidated_weather[0].weather_state_name}</WeatherState>
             </DivIcon>
             <DivInformations>
                 <DateInfo>
-                    Today . {day[1]}, {day[0]} {day[2]}
+                    Today . {day}
                 </DateInfo>
                 <Location>
                     <RoomIcon></RoomIcon>

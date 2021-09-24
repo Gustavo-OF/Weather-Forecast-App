@@ -7,82 +7,59 @@ import {
     DivSpaceHighlights,
     DivHighlightsLeft,
     DivHighlightsRight,
-    IconImg
+    IconImg,
+    ChangeMeasureDiv,
+    CelsiusDiv
 } from "./ui/WeatherDetails";
 import { WeekDays, Highlights, H1, H5 } from "./ui/WeatherDetails/fonts"
-import { returnDate } from "./useCases/formatingDate";
+import { Celsius, Farenheit } from "./ui/WeatherDetails/buttons"
 
+import { returnDate } from "./useCases/formatingDate";
+import { toFahrenheit } from "./useCases/changeMeasure"
 
 
 function WeatherDetails(props) {
-    let day = []
-    day[0] = returnDate(props.weather.consolidated_weather[1].applicable_date)
-    day[1] = returnDate(props.weather.consolidated_weather[2].applicable_date)
-    day[2] = returnDate(props.weather.consolidated_weather[3].applicable_date)
-    day[3] = returnDate(props.weather.consolidated_weather[4].applicable_date)
-    day[4] = returnDate(props.weather.consolidated_weather[5].applicable_date)
 
+    function ListItem(props) {
+        
+        let minTemp = props.value.min_temp.toFixed(1);
+        let maxTemp = props.value.max_temp.toFixed(1);
+            
+        let link = `https://www.metaweather.com/static/img/weather/${props.value.weather_state_abbr}.svg`;
+        let date =  returnDate(props.value.applicable_date);
+        return (
+            <NextDays>
+                <WeekDays>
+                <p>{date}</p>
+                    <IconImg>
+                        <img src={link} alt="icon"></img>
+                    </IconImg>
+                        <CelsiusDiv>{minTemp} {props.measure} {maxTemp} {props.measure}</CelsiusDiv>
+                </WeekDays>
+            </NextDays>
+        )
+    }
 
-
-    let link = []
-    link[0] = `https://www.metaweather.com/static/img/weather/${props.weather.consolidated_weather[1].weather_state_abbr}.svg`
-    link[1] = `https://www.metaweather.com/static/img/weather/${props.weather.consolidated_weather[2].weather_state_abbr}.svg`
-    link[2] = `https://www.metaweather.com/static/img/weather/${props.weather.consolidated_weather[3].weather_state_abbr}.svg`
-    link[3] = `https://www.metaweather.com/static/img/weather/${props.weather.consolidated_weather[4].weather_state_abbr}.svg`
-    link[4] = `https://www.metaweather.com/static/img/weather/${props.weather.consolidated_weather[5].weather_state_abbr}.svg`
-
-
-
+    function WeatherList(props, measure = "℃") {
+                
+        const listItems = props.slice(1,6).map((index, i) =>               
+            <ListItem key={i} value={index} measure={measure}></ListItem>
+        )
+        return (
+            <NextDaysDiv>
+                {listItems}
+            </NextDaysDiv>
+        )
+    }
 
     return (
         <Background>
-            <NextDaysDiv>
-                <NextDays>
-                    <WeekDays>
-                    <p>Tomorrow</p>
-                        <IconImg>
-                            <img src={link[0]} alt="icon"></img>
-                        </IconImg>
-                        <p>{props.weather.consolidated_weather[1].min_temp.toFixed(1)}℃ {props.weather.consolidated_weather[1].max_temp.toFixed(1)}℃</p>
-                    </WeekDays>
-                </NextDays>
-                <NextDays>
-                    <WeekDays>
-                        <p>{day[1][1]}, {day[1][0]} {day[1][2]}</p>
-                        <IconImg>
-                            <img src={link[1]} alt="icon"></img>
-                        </IconImg>
-                        <p>{props.weather.consolidated_weather[2].min_temp.toFixed(1)}℃ {props.weather.consolidated_weather[2].max_temp.toFixed(1)}℃</p>
-                    </WeekDays>
-                </NextDays>
-                <NextDays>
-                    <WeekDays>
-                        <p>{day[2][1]}, {day[2][0]} {day[2][2]}</p>
-                        <IconImg>
-                            <img src={link[2]} alt="icon"></img>
-                        </IconImg>
-                        <p>{props.weather.consolidated_weather[3].min_temp.toFixed(1)}℃ {props.weather.consolidated_weather[3].max_temp.toFixed(1)}℃ </p>
-                    </WeekDays>
-                </NextDays>
-                <NextDays>
-                    <WeekDays>
-                        <p>{day[3][1]}, {day[3][0]} {day[3][2]}</p>
-                        <IconImg>
-                            <img src={link[3]} alt="icon"></img>
-                        </IconImg>
-                        <p>{props.weather.consolidated_weather[4].min_temp.toFixed(1)}℃ {props.weather.consolidated_weather[4].max_temp.toFixed(1)}℃</p>
-                    </WeekDays>
-                </NextDays>
-                <NextDays>
-                    <WeekDays>
-                        <p>{day[4][1]}, {day[4][0]} {day[4][2]}</p>
-                        <IconImg>
-                            <img src={link[4]} alt="icon"></img>
-                        </IconImg>
-                        <p>{props.weather.consolidated_weather[5].min_temp.toFixed(1)}℃ {props.weather.consolidated_weather[5].max_temp.toFixed(1)}℃</p>
-                    </WeekDays>
-                </NextDays>
-            </NextDaysDiv>
+            <ChangeMeasureDiv>
+                <Celsius value="c" onClick={e => WeatherList(props.weather.consolidated_weather, e.target.value)}>℃</Celsius>
+                <Farenheit value="f" onClick={e => WeatherList(props.weather.consolidated_weather, e.target.value)} >℉</Farenheit>
+            </ChangeMeasureDiv>
+            
+            {props.weather !== [] ? WeatherList(props.weather.consolidated_weather) : ""}
 
             <DivSpaceHighlights>
                 <Highlights>Today's Highlights</Highlights>

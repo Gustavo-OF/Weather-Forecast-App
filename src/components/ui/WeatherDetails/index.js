@@ -22,7 +22,7 @@ const NextDaysDiv = styled.div`
 const NextDays = styled.div`
     width: 25%;
     height: 85%;
-    margin: 2% 2% 0 2%;
+    margin: 0 2% 0 2%;
     float: right;
     position: relative;   
     background-color: #1E213A;
@@ -59,6 +59,21 @@ const IconImg = styled.div`
     height:3%;
     margin-left: 25%;
 `
+const ChangeMeasureDiv = styled.div`
+    //border: 1px solid red;
+    height: 5%;
+    width: 12%;
+    float: right;
+    margin-right: 21.5%;
+    margin-top: 1%;
+`
+
+const CelsiusDiv = styled.p`
+    
+`
+
+const FarDiv = styled.p`
+`
 
 export { 
     Background,
@@ -67,5 +82,8 @@ export {
     DivSpaceHighlights,
     DivHighlightsLeft,
     DivHighlightsRight,
-    IconImg
+    IconImg,
+    ChangeMeasureDiv,
+    CelsiusDiv,
+    FarDiv
 }

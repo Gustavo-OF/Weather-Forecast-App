@@ -88,7 +88,7 @@ function App() {
           <SearchForPlaces/>
           <WeatherDetails weather={weather}/>
         </Route>
-        <Route path="/:lat?/:long?">
+        <Route path="/:lat?/:long?/:measure?">
           <WeatherCity weather={weather} link={link} />
           <WeatherDetails weather={weather}/>
         </Route>
