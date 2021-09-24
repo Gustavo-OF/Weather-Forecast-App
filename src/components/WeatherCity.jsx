@@ -1,9 +1,17 @@
+//  Importação do React.
 import React from "react";
+//  Fim importação do React.
+
+//  Importação de ícones
 import GpsFixedIcon from "@material-ui/icons/GpsFixed";
 import RoomIcon from "@material-ui/icons/Room";
+//  Fim importação de ícones
+
+//  Importação do Link do Router
 import { Link } from "react-router-dom";
+//  Fim importação do Link
 
-
+//  Importação de estilos.
 import {
     Background,
     DivInformations,
@@ -25,8 +33,18 @@ import {
     Location
 } from "./ui/WeatherCity/fonts"
 import { SearchCitiesButton, GetLocalizationButton } from "./ui/WeatherCity/buttons";
-import { returnDate } from "./useCases/formatingDate";
+//  Fim importação de estilos
 
+//  Importação da classe de formatar datas.
+import { returnDate } from "./useCases/formatingDate";
+//  Fim importaçao da classe
+
+/**
+ * Função de mostrar o clima do dia atual. Recebe como paramêtro as 
+ * informações do tempo pelo App.js e apresenta na tela.
+ * @param {*} props 
+ * @returns 
+ */
 function WeatherCity(props) {
     let day = returnDate();
     return (

@@ -11,7 +11,7 @@ export async function getWeather (lat, long) {
     let res = await api.get("/location/"+req.data[0].woeid);
     return res.data;
   }catch(err){
-    return err;
+    return 429;
   }
 }
 
@@ -22,7 +22,7 @@ export async function searchCity (query) {
     return req.data
     
   }catch(err){
-    return err;
+    return 429;
     // if(err.response.status) {
     //   return err.response.status
     // }else{

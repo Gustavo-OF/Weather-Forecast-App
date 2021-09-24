@@ -9,6 +9,13 @@ const Background = styled.div`
     height: 100%;
     position: absolute;
     overflow: hidden;
+    @media(max-width: 800px) {
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+        position: relative;
+        margin-right: 0.5%;
+  }
 `
 const NextDaysDiv = styled.div`
     //border: 1px solid red;
@@ -17,6 +24,14 @@ const NextDaysDiv = styled.div`
     margin-top: 5%;
     margin-left: 10%;
     display: flex;
+    @media(max-width: 800px) {
+        height: 100%;
+        width: 80%;
+        flex-direction: column;
+        //border: 1px solid red;
+        overflow: auto;
+        display: inline-block;
+  }
 `
 
 const NextDays = styled.div`
@@ -26,6 +41,15 @@ const NextDays = styled.div`
     float: right;
     position: relative;   
     background-color: #1E213A;
+    @media(max-width: 800px) {
+        height: 100%;
+        width: 45%;
+        flex-direction: row;
+        margin: 2% 2% 2% 3%;
+        //border: 1px solid red;
+        overflow: auto;
+        display: inline-block;
+  }
 `
 
 const DivSpaceHighlights = styled.div`
@@ -35,6 +59,13 @@ const DivSpaceHighlights = styled.div`
     bottom: 0;
     width: 51%;
     margin-left: 8.5%;
+        @media(max-width: 800px) {
+        height: 100%;
+        width: 80%;
+        flex-direction: column;
+        //border: 1px solid red;
+        position: relative;
+  }
 `
 
 const DivHighlightsLeft = styled.div`
@@ -45,6 +76,13 @@ const DivHighlightsLeft = styled.div`
     margin-right: 5%;
     float: left;
     background-color: #1E213A;
+    @media(max-width: 800px) {
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+        //border: 1px solid red;
+        position: relative;
+  }
 `
 const DivHighlightsRight = styled.div`
     //border: 1px solid black;
@@ -53,26 +91,18 @@ const DivHighlightsRight = styled.div`
     margin-top: 1%;
     float: right;
     background-color: #1E213A;
+            @media(max-width: 800px) {
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+        //border: 1px solid red;
+        position: relative;
+  }
 `
 const IconImg = styled.div`
     width: 50%;
     height:3%;
     margin-left: 25%;
-`
-const ChangeMeasureDiv = styled.div`
-    //border: 1px solid red;
-    height: 5%;
-    width: 12%;
-    float: right;
-    margin-right: 21.5%;
-    margin-top: 1%;
-`
-
-const CelsiusDiv = styled.p`
-    
-`
-
-const FarDiv = styled.p`
 `
 
 export { 
@@ -82,8 +112,5 @@ export {
     DivSpaceHighlights,
     DivHighlightsLeft,
     DivHighlightsRight,
-    IconImg,
-    ChangeMeasureDiv,
-    CelsiusDiv,
-    FarDiv
+    IconImg
 }

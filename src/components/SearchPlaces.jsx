@@ -1,7 +1,18 @@
+//  Importações React.
 import React, { useCallback, useState } from "react";
-import { Link } from "react-router-dom";
-import Search from "@material-ui/icons/Search"
+//  Fim importações React.
 
+//  Importação das rotas do React.
+import { Link } from "react-router-dom";
+//  Fim importação das rotas.
+
+//  Importação de ícones.
+import Search from "@material-ui/icons/Search"
+import { InputAdornment } from "@material-ui/core";
+import Input from "@material-ui/core/Input"
+//  Fim importação dos ícones.
+
+//  Importação de estilos do styled-components.
 import { 
     Background, 
     SearchDiv,
@@ -14,12 +25,22 @@ import{
     Back, 
     SearchButton,
 } from "./ui/SearchPlaces/buttons"
+//  Fim importação de estilos.
 
-import { InputAdornment } from "@material-ui/core";
-import Input from "@material-ui/core/Input"
+//  Importação da API de pesquisa do tempo
 import { searchCity } from "./useCases/returnWeather/api";
+//  Fim importação da API
 
-function SearchForPlaces(props) {
+/**
+ * Função do componente de pesquisa de cidades. Faz a busca e 
+ * apresenta o resultado de todas as cidades de acordo com o retorno 
+ * da API e, ao selecionar uma cidade, cria um Link para a pagina 
+ * principal com as coordenadas da cidade selecionada para realizar 
+ * a pesquisa do tempo.
+ * 
+ * @returns 
+ */
+function SearchForPlaces() {
 
     const [query, setQuery] = useState("");
     const [isSending, setIsSending] = useState(false)

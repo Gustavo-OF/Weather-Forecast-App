@@ -12,6 +12,14 @@ const SearchButton = styled.button`
     font-size: 18px;
     border: none;
     color: #efefef;
+    @media(max-width: 800px) {
+        height: 10%;
+        padding-top:2%;
+        width: 19%;
+        flex-direction: column;
+        position: relative;
+        margin-left: 4%;
+  }
 `
 const Back = styled.div`
     color: #e7e7eb;

@@ -10,6 +10,13 @@ const Background = styled.div`
     margin-top: -0.6%;
     overflow: hidden;
     position: absolute;
+
+    @media(max-width: 800px) {
+        height: 36.15rem;
+        width: 100%;
+        flex-direction: column;
+        position: relative;
+  }
 `
 
 const Input = styled.input`
@@ -25,6 +32,13 @@ const SearchDiv = styled.div`
     width: 60%;
     height: 10%;
     margin-left: 5%;
+    @media(max-width: 800px) {
+        height: auto;
+        width: 100%;
+        flex-direction: column;
+        //border: 1px solid red;
+        overflow: auto;
+  }
 `
 
 const ResultsDiv = styled.div`
@@ -33,10 +47,22 @@ const ResultsDiv = styled.div`
     margin-top: -15%;
     //border: 1px solid red;
     margin-left: 15%;
+    @media(max-width: 800px) {
+        height: 50%;
+        width: 100%;
+        flex-direction: column;
+        margin-left: 20%
+        //border: 1px solid red
+  }
 
 `
 const ListCitiesUl = styled.ul`
     list-style-type: none;
+    @media(max-width: 800px) {
+        height: auto;
+        width: auto;
+        margin-top: 20%;
+  }
 `
 
 const ResultsLi = styled.li`
@@ -52,6 +78,14 @@ const ResultsLi = styled.li`
         padding: 5% 5% 5% 3%;
     }
     list-style-type: none;
+    @media(max-width: 800px) {
+        height: auto;
+        width: 94%;
+        flex-direction: column;
+        //border: 1px solid red;
+        overflow: auto;
+        margin-top: 12%;
+  }
 `
 
 export { 

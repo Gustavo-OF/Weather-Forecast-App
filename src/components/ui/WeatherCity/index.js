@@ -10,6 +10,13 @@ const Background = styled.div`
     margin-top: -0.6%;
     overflow: hidden;
     position: absolute;
+
+    @media(max-width: 800px) {
+        height: auto;
+        width: 100%;
+        flex-direction: column;
+        position: relative;
+  }
 `
 
 const DivInformations = styled.div`
@@ -18,6 +25,12 @@ const DivInformations = styled.div`
     width: 100%;
     position: absolute;
     bottom: 0;
+    @media(max-width: 800px) {
+        height: 100% auto;
+        width: 100%;
+        flex-direction: column;
+        position: relative;
+  }
 `
 
 const DivSearch = styled.div`

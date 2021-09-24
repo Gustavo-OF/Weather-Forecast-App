@@ -1,5 +1,8 @@
+//  Importação do React.
 import { React } from "react";
+//  Fim importação do React.
 
+//  Importação dos estilos.
 import {
     Background,
     NextDaysDiv,
@@ -8,18 +11,24 @@ import {
     DivHighlightsLeft,
     DivHighlightsRight,
     IconImg,
-    ChangeMeasureDiv,
-    CelsiusDiv
 } from "./ui/WeatherDetails";
 import { WeekDays, Highlights, H1, H5 } from "./ui/WeatherDetails/fonts"
-import { Celsius, Farenheit } from "./ui/WeatherDetails/buttons"
+//  Fim importação dos estilos
 
+//  Importação da classe de formatação de data.
 import { returnDate } from "./useCases/formatingDate";
-import { toFahrenheit } from "./useCases/changeMeasure"
+//  Fim da classe de formatação de data. 
 
-
+/**
+ * Função para listar a informação do tempo nos próximos cinco dias, apresentando
+ * temperatura miníma e máxima. Recebe como parametro as informações dos próximos 
+ * 6 dias, contando com o dia atual.
+ * @param {*} props 
+ * @returns 
+ */
 function WeatherDetails(props) {
-
+    
+    //  Lista os itens do array
     function ListItem(props) {
         
         let minTemp = props.value.min_temp.toFixed(1);
@@ -34,12 +43,13 @@ function WeatherDetails(props) {
                     <IconImg>
                         <img src={link} alt="icon"></img>
                     </IconImg>
-                        <CelsiusDiv>{minTemp} {props.measure} {maxTemp} {props.measure}</CelsiusDiv>
+                        <p>{minTemp} {props.measure} {maxTemp} {props.measure}</p>
                 </WeekDays>
             </NextDays>
         )
     }
 
+    //  Separa o array e chama a função de listar
     function WeatherList(props, measure = "℃") {
                 
         const listItems = props.slice(1,6).map((index, i) =>               
@@ -54,10 +64,6 @@ function WeatherDetails(props) {
 
     return (
         <Background>
-            <ChangeMeasureDiv>
-                <Celsius value="c" onClick={e => WeatherList(props.weather.consolidated_weather, e.target.value)}>℃</Celsius>
-                <Farenheit value="f" onClick={e => WeatherList(props.weather.consolidated_weather, e.target.value)} >℉</Farenheit>
-            </ChangeMeasureDiv>
             
             {props.weather !== [] ? WeatherList(props.weather.consolidated_weather) : ""}
 
